@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+## React with Context API Example
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an example of a React component that uses the Context API.
 
-## Available Scripts
+```jsx
+import React, { createContext, useContext, useState } from "react";
 
-In the project directory, you can run:
+// Create a new context object
+const ThemeContext = createContext();
 
-### `npm start`
+// A component that provides the context data
+function ThemeProvider(props) {
+  const [theme, setTheme] = useState("light");
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {props.children}
+    </ThemeContext.Provider>
+  );
+}
 
-### `npm test`
+// A custom hook that allows components to access the context data
+function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+// A component that consumes the context data
+function MyComponent() {
+  const { theme, toggleTheme } = useTheme();
 
-### `npm run build`
+  return (
+    <div>
+      <h1>{theme === "light" ? "Light Theme" : "Dark Theme"}</h1>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+    </div>
+  );
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// A component that renders the entire app
+function App() {
+  return (
+    <ThemeProvider>
+      <MyComponent />
+    </ThemeProvider>
+  );
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+export default App;
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This code defines a `ThemeContext` object using the `createContext` function. The `ThemeProvider` component provides the context data by setting the value of `ThemeContext.Provider` to an object with a theme property and a `toggleTheme` function. The `useTheme` hook allows other components to access the context data, and the `MyComponent` component demonstrates how to use the `useTheme` hook to toggle the theme.
 
-### `npm run eject`
+When the `toggleTheme` function is called, it updates the state of the theme property, which causes any components that use the `useTheme` hook to re-render with the new theme.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Overall, this code demonstrates how to use the Context API in React to share data and functionality across multiple components in a simple and scalable way.
