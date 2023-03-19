@@ -32,6 +32,23 @@
 ### Class - 8
 
 - Redux
+- https://redux-toolkit.js.org/tutorials/quick-start
+
+## Project
+
+- User Roles: Admin, Public User
+- Two Radio button on Login page to select user role
+- For Authentication use `Context`
+- For Cart use `Redux Toolkit`
+- Admin Routes
+  - Dashboard(Products List - Table)
+  - Products Detail Page
+  - Orders List Page
+  - Order Detail Page (mark shipped)
+- Public User Routes
+  - Home (Products List - Gallery)
+  - Checkout (Cart, Address)
+  - Product Detail Page
 
 ## Links
 
