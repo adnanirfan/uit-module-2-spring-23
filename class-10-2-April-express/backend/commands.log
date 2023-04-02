@@ -1,0 +1,13 @@
+cd class-10-2-April-express
+ls
+npm init
+ls
+code package.json
+touch index.js
+ls
+code index.js
+npm install express
+ls
+node index.js
+nodemon index.js
+npm start
