@@ -34,6 +34,20 @@
 - Redux
 - https://redux-toolkit.js.org/tutorials/quick-start
 
+### Class - 9
+
+- Nodejs
+- ExpressJS Getting started with E
+- Assignment: Differences between => npx - npm - yarn
+- Assignment: Implement todos CRUD in Express
+    - Todo frontend, backend 
+- Commands available in Class-9 folder `history.log`
+
+### Class - 10
+
+- ExpressJS
+- Backend API integration on Frontend
+
 ## Project
 
 - User Roles: Admin, Public User
