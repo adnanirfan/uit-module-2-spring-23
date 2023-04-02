@@ -1,0 +1,23 @@
+node -v
+./
+mkdir class-9-26-March
+cd class-9-26-March-express
+ls
+npm init
+ls
+npm install --save express
+ls
+code package.json
+npm run test
+touch index.js
+ls
+code index.js
+npm run start
+node index.js
+code ~/.zsh_history
+npx express-generator
+npm start
+npm i
+npm start
+nodemon index.js
+nodemon ./bin/www
