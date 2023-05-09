@@ -13,17 +13,17 @@ function App() {
   }, []);
 
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:3001/users");
+    const response = await axios.get("http://localhost:3005/users");
     console.log(response.data);
     setData(response.data);
   };
 
   const submit = async () => {
-    // const x = await fetch("http://localhost:3001/users", {
+    // const x = await fetch("http://localhost:3005/users", {
     //   method: "POST",
     //   body: JSON.stringify({ name, class: cls }),
     // });
-    const x = await axios.post("http://localhost:3001/users", {
+    const x = await axios.post("http://localhost:3005/users", {
       name,
       class: cls,
     });
