@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fetching Data from Firebase Realtime Database</title>
+  </head>
+  <body>
+    <h1>Data from Firebase:</h1>
+    <ul id="dataList"></ul>
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    <script>
+      // Initialize Firebase
+      var firebaseConfig = {
+        apiKey: "AIzaSyBsS60dv4tgZEWNzW5XUhygg5AWgaeAQIk",
+        authDomain: "module-2-spring-2023.firebaseapp.com",
+        projectId: "module-2-spring-2023",
+        storageBucket: "module-2-spring-2023.appspot.com",
+        messagingSenderId: "399042347819",
+        appId: "1:399042347819:web:d6849406aad272a6a5bb6e",
+        databaseURL:
+          "https://module-2-spring-2023-default-rtdb.asia-southeast1.firebasedatabase.app/",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      // Get a reference to the database
+      var database = firebase.database();
+
+      // Get a reference to the desired database node
+      var dataRef = database.ref("list");
+
+      dataRef
+        .on("value", function (snapshot) {
+          console.log("snapshot", snapshot);
+          var dataList = document.getElementById("dataList");
+
+          // Iterate through each child node of the snapshot
+          snapshot.forEach(function (childSnapshot) {
+            // Get the value of the child node
+            var data = childSnapshot.val();
+
+            // Create a list item element
+            var listItem = document.createElement("li");
+            listItem.textContent = data;
+
+            // Append the list item to the data list
+            dataList.appendChild(listItem);
+          });
+        })
+        // .then()
+        // .catch(function (error) {
+        //   console.log("Error fetching data:", error);
+        // });
+
+      // Fetch data from the database
+      //   dataRef
+      //     .once("value")
+      //     .then(function (snapshot) {
+      //       var dataList = document.getElementById("dataList");
+
+      //       // Iterate through each child node of the snapshot
+      //       snapshot.forEach(function (childSnapshot) {
+      //         // Get the value of the child node
+      //         var data = childSnapshot.val();
+
+      //         // Create a list item element
+      //         var listItem = document.createElement("li");
+      //         listItem.textContent = data;
+
+      //         // Append the list item to the data list
+      //         dataList.appendChild(listItem);
+      //       });
+      //     })
+      //     .catch(function (error) {
+      //       console.log("Error fetching data:", error);
+      //     });
+    </script>
+  </body>
+</html>

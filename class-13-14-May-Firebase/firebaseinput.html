@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fetching and Adding Data to Firebase Realtime Database</title>
+  </head>
+  <body>
+    <h1>Data from Firebase:</h1>
+    <ul id="dataList"></ul>
+
+    <h2>Add Data:</h2>
+    <input type="text" id="dataInput" placeholder="Enter data" />
+    <input type="checkbox" id="importantCheckbox" />
+    <label for="importantCheckbox">Important</label>
+    <button id="addButton">Add</button>
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    <script>
+      // Initialize Firebase
+      var firebaseConfig = {
+        apiKey: "AIzaSyBsS60dv4tgZEWNzW5XUhygg5AWgaeAQIk",
+        authDomain: "module-2-spring-2023.firebaseapp.com",
+        projectId: "module-2-spring-2023",
+        storageBucket: "module-2-spring-2023.appspot.com",
+        messagingSenderId: "399042347819",
+        appId: "1:399042347819:web:d6849406aad272a6a5bb6e",
+        databaseURL:
+          "https://module-2-spring-2023-default-rtdb.asia-southeast1.firebasedatabase.app/",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      // Get a reference to the database
+      var database = firebase.database();
+
+      // Get a reference to the desired database node
+      var dataRef = database.ref("list");
+
+      // Fetch initial data from the database and render it on the page
+      dataRef
+        .once("value")
+        .then(function (snapshot) {
+          renderData(snapshot);
+        })
+        .catch(function (error) {
+          console.log("Error fetching data:", error);
+        });
+
+      // Handle real-time changes to the database
+      dataRef.on("value", function (snapshot) {
+        renderData(snapshot);
+      });
+
+      // Render the data on the page
+      function renderData(snapshot) {
+        var dataList = document.getElementById("dataList");
+        dataList.innerHTML = ""; // Clear existing data
+
+        // Iterate through each child node of the snapshot
+        snapshot.forEach(function (childSnapshot) {
+          // Get the value of the child node
+          var data = childSnapshot.val();
+
+          // Create a list item element
+          var listItem = document.createElement("li");
+          listItem.textContent = data.data;
+
+          if (data.important) {
+            listItem.style.fontWeight = "bold";
+          }
+
+          // Append the list item to the data list
+          dataList.appendChild(listItem);
+        });
+      }
+
+      // Add button event listener
+      var addButton = document.getElementById("addButton");
+      addButton.addEventListener("click", function () {
+        var dataInput = document.getElementById("dataInput");
+        var importantCheckbox = document.getElementById("importantCheckbox");
+
+        var newData = dataInput.value;
+        var isImportant = importantCheckbox.checked;
+
+        // Push new data to the database
+        var newDataRef = dataRef.push();
+        newDataRef
+          .set({
+            data: newData,
+            important: isImportant,
+          })
+          .then(function () {
+            console.log("Data added successfully.");
+            dataInput.value = "";
+            importantCheckbox.checked = false;
+          })
+          .catch(function (error) {
+            console.log("Error adding data:", error);
+          });
+      });
+    </script>
+  </body>
+</html>
