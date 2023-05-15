@@ -6,7 +6,11 @@
   <body>
     <h1>Data from Firebase:</h1>
     <ul id="dataList"></ul>
-
+    <!-- 
+      firebase login
+      firebase init
+      firebase deploy
+    -->
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
     <script>
@@ -30,28 +34,27 @@
       // Get a reference to the desired database node
       var dataRef = database.ref("list");
 
-      dataRef
-        .on("value", function (snapshot) {
-          console.log("snapshot", snapshot);
-          var dataList = document.getElementById("dataList");
+      dataRef.on("value", function (snapshot) {
+        console.log("snapshot", snapshot);
+        var dataList = document.getElementById("dataList");
 
-          // Iterate through each child node of the snapshot
-          snapshot.forEach(function (childSnapshot) {
-            // Get the value of the child node
-            var data = childSnapshot.val();
+        // Iterate through each child node of the snapshot
+        snapshot.forEach(function (childSnapshot) {
+          // Get the value of the child node
+          var data = childSnapshot.val();
 
-            // Create a list item element
-            var listItem = document.createElement("li");
-            listItem.textContent = data;
+          // Create a list item element
+          var listItem = document.createElement("li");
+          listItem.textContent = data;
 
-            // Append the list item to the data list
-            dataList.appendChild(listItem);
-          });
-        })
-        // .then()
-        // .catch(function (error) {
-        //   console.log("Error fetching data:", error);
-        // });
+          // Append the list item to the data list
+          dataList.appendChild(listItem);
+        });
+      });
+      // .then()
+      // .catch(function (error) {
+      //   console.log("Error fetching data:", error);
+      // });
 
       // Fetch data from the database
       //   dataRef
