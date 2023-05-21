@@ -64,6 +64,19 @@
   - Checkout (Cart, Address)
   - Product Detail Page
 
+## React Native - Project - Todo List App
+
+  - Firebase Integration
+  - Authentication
+  - Login
+  - Sign Up
+  - Home (with todos list, checkbox to mark it as complete) 
+  - Add Todo
+  - Edit Todo
+  - !Dark Mode
+
+
+
 ## Links
 
 - [Component Tree Example in 4th Class](https://miro.medium.com/max/1400/1*kV4ng8E7dD-Z6gsWsKPCDg.png)
