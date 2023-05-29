@@ -40,7 +40,7 @@
 - ExpressJS Getting started with E
 - Assignment: Differences between => npx - npm - yarn
 - Assignment: Implement todos CRUD in Express
-    - Todo frontend, backend 
+  - Todo frontend, backend
 - Commands available in Class-9 folder `history.log`
 
 ### Class - 10
@@ -66,16 +66,25 @@
 
 ## React Native - Project - Todo List App
 
-  - Firebase Integration
-  - Authentication
-  - Login
-  - Sign Up
-  - Home (with todos list, checkbox to mark it as complete) 
-  - Add Todo
-  - Edit Todo
-  - !Dark Mode
+- Firebase Integration
+- Authentication
+- Login
+- Sign Up
+- Home (with todos list, checkbox to mark it as complete)
+- Add Todo
+- Edit Todo
+- !Dark Mode
 
+# Class - 16 -
 
+- End to end application
+- React, Express, MongoDB
+- Authentication Firebase
+- JWT
+
+# Class - 17
+
+- React Native
 
 ## Links
 
