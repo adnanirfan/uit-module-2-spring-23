@@ -1,0 +1,23 @@
+{
+  "name": "revision",
+  "version": "1.0.0",
+  "description": "1. Components 1. Hooks (useState) 1. States 1. Events 1. List 1. Conditional Rendering (ternary Operator, if else) 1. Props 1. Child Components 1. useEffect (Mount, ReRender, UnMount, addEventListener) 1. API Integration (fetch) 1. Context API",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adnanirfan/uit-module-2-spring-23.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adnanirfan/uit-module-2-spring-23/issues"
+  },
+  "homepage": "https://github.com/adnanirfan/uit-module-2-spring-23#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

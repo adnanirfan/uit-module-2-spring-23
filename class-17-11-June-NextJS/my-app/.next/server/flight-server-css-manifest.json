@@ -1,0 +1,14 @@
+{
+  "cssImports": {
+    "/Users/adnanirfan/GitHub/UIT/Module 2 - Spring 2023/class-17-11-June-NextJS/my-app/src/app/layout.tsx": [
+      "/Users/adnanirfan/GitHub/UIT/Module 2 - Spring 2023/class-17-11-June-NextJS/my-app/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}",
+      "/Users/adnanirfan/GitHub/UIT/Module 2 - Spring 2023/class-17-11-June-NextJS/my-app/src/app/globals.css"
+    ]
+  },
+  "cssModules": {
+    "/Users/adnanirfan/GitHub/UIT/Module 2 - Spring 2023/class-17-11-June-NextJS/my-app/src/app/page": [
+      "/Users/adnanirfan/GitHub/UIT/Module 2 - Spring 2023/class-17-11-June-NextJS/my-app/src/app/globals.css",
+      "/Users/adnanirfan/GitHub/UIT/Module 2 - Spring 2023/class-17-11-June-NextJS/my-app/node_modules/next/font/google/target.css?{\"path\":\"src/app/layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}"
+    ]
+  }
+}

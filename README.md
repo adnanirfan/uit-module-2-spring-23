@@ -77,14 +77,14 @@
 
 # Class - 16 -
 
+- React Native
+
+# Class - 17
+
 - End to end application
 - React, Express, MongoDB
 - Authentication Firebase
 - JWT
-
-# Class - 17
-
-- React Native
 
 ## Links
 

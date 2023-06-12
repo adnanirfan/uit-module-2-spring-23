@@ -9,20 +9,23 @@
         getDatabase,
         ref,
         set,
+        onValue,
+        get,
+        child,
       } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
 
       // Your web app's Firebase configuration
       const firebaseConfig = {
-        apiKey: "AIzaSyBsS60dv4tgZEWNzW5XUhygg5AWgaeAQIk",
-        authDomain: "module-2-spring-2023.firebaseapp.com",
+        apiKey: "AIzaSyD2E_zWE5dNyAH0_pj5cqnxZ18RDsLizjE",
+        authDomain: "fir-revision-d615c.firebaseapp.com",
         databaseURL:
           "https://fir-revision-d615c-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "module-2-spring-2023",
-        storageBucket: "module-2-spring-2023.appspot.com",
-        messagingSenderId: "399042347819",
-        appId: "1:399042347819:web:d6849406aad272a6a5bb6e",
+        projectId: "fir-revision-d615c",
+        storageBucket: "fir-revision-d615c.appspot.com",
+        messagingSenderId: "583162802027",
+        appId: "1:583162802027:web:a36f375203736568bd262e",
       };
 
       // Initialize Firebase
@@ -44,11 +47,30 @@
       //   "adnan@gmail.com",
       //   "https://accounts.google.com/SignOutOptions?hl=en&continue=https://firebase.google.com/_d/profile/ogb%3Fhl%3Den%26authuser%3D0"
       // );
+
+      const userRef = ref(db, "users/asdf");
+      // onValue(userRef, (snapshot) => {
+      //   const data = snapshot.val();
+      //   console.log("DATA:", data);
+      //   // updateStarCount(postElement, data);
+      // });
+
+      get(userRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            console.log(snapshot.val());
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
       const submitBtn = document.getElementById("submit");
       console.log(submitBtn);
 
       submitBtn.onclick = (event) => {
-        debugger;
         event.preventDefault();
         console.log("On Submit", event);
         const username = document.getElementById("username");
